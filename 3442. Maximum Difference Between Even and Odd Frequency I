@@ -1,0 +1,24 @@
+class Solution {
+    public int maxDifference(String s) {
+
+        HashMap<Character, Integer> hash = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            hash.put(s.charAt(i), hash.getOrDefault(s.charAt(i), 0) + 1);
+
+        }
+        int oddmax = 0;
+        int evenmin = s.length();
+
+        for (int result : hash.values()) {
+            if (result % 2 == 1) {
+                oddmax = Math.max(oddmax, result);
+            } else {
+                evenmin = Math.min(evenmin, result);
+            }
+        }
+
+        return oddmax - evenmin;
+
+    }
+}
